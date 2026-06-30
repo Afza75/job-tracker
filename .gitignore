@@ -1,5 +1,6 @@
 # Frontend
 node_modules/
+.env 
 
 # Backend
 job-tracker-backend/node_modules/
