@@ -1,4 +1,6 @@
 import { useState } from 'react';
+const API = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 
 export default function AuthPage({ onLogin }) {
   const [isLogin, setIsLogin] = useState(true);
@@ -15,16 +17,16 @@ export default function AuthPage({ onLogin }) {
 
     try {
       const response = isLogin
-        ? await fetch('http://localhost:5000/auth/login', {
+        ? await fetch(`${API}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
-          })
-        : await fetch('http://localhost:5000/auth/signup', {
+            })
+        : await fetch(`${API}/auth/signup`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, password })
-          });
+            });
 
       const data = await response.json();
 
